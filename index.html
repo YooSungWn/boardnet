@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>보드넷 | 전략형 온라인 게임 플랫폼</title>
   <meta name="description" content="카드, 추리, 심리전, 턴제 대전을 온라인에서 즐기는 전략형 게임 플랫폼" />
-  <link rel="stylesheet" href="./style.css?v=20" />
+  <link rel="stylesheet" href="./style.css?v=30" />
 </head>
 
 <body>
   <header class="topbar">
     <nav class="wrap nav">
-      <a class="brand" href="#">
+      <a class="brand" href="#" aria-label="보드넷 홈">
         <i class="logo"></i>
         <span>보드넷</span>
       </a>
@@ -26,7 +26,7 @@
 
   <div class="menu">
     <a class="active" href="#">홈</a>
-    <a href="#games">게임</a>
+    <a href="#" data-open-catalog>게임</a>
     <a href="#rank">랭킹</a>
     <a href="#event">이벤트</a>
     <a href="#community">커뮤니티</a>
@@ -34,9 +34,9 @@
   </div>
 
   <div class="account">
-    <button class="theme-toggle" type="button" aria-label="테마 변경">테마</button>
+    <button class="theme-toggle" type="button">라이트</button>
     <a href="#">로그인</a>
-    <a class="btn primary" href="#games">지금 시작</a>
+    <a class="btn primary" href="#" data-open-catalog>지금 시작</a>
   </div>
 </nav>
 ```
@@ -60,8 +60,8 @@
     </p>
 
     <div class="hero-actions">
-      <a class="btn purple" href="#games">지금 시작하기 →</a>
-      <a class="btn" href="#games">게임 둘러보기</a>
+      <a class="btn purple" href="#" data-open-catalog>지금 시작하기 →</a>
+      <a class="btn" href="#" data-open-catalog>게임 둘러보기</a>
     </div>
 
     <div class="feature-line">
@@ -151,30 +151,17 @@
   </article>
 </section>
 
-<section id="games">
+<section class="featured">
   <div class="section-head">
     <div>
       <h2>추천 게임</h2>
-      <p class="section-desc">검색하거나 장르를 선택해서 원하는 게임을 빠르게 찾으세요.</p>
+      <p class="section-desc">메인에서는 대표 게임만 보여주고, 전체 목록은 게임 창에서 정리해서 확인합니다.</p>
     </div>
-    <a class="more" href="#">전체 게임 보기 ›</a>
+    <button class="more-btn" type="button" data-open-catalog>전체 게임 보기 ›</button>
   </div>
 
-  <div class="game-tools">
-    <input id="gameSearch" type="search" placeholder="게임명 또는 장르 검색" aria-label="게임 검색" />
-
-    <div class="filter-buttons">
-      <button class="filter-btn active" type="button" data-filter="all">전체</button>
-      <button class="filter-btn" type="button" data-filter="전략">전략</button>
-      <button class="filter-btn" type="button" data-filter="카드">카드</button>
-      <button class="filter-btn" type="button" data-filter="추리">추리</button>
-      <button class="filter-btn" type="button" data-filter="심리전">심리전</button>
-      <button class="filter-btn" type="button" data-filter="파티">파티</button>
-    </div>
-  </div>
-
-  <div class="games" id="gameList">
-    <article class="game-card" data-title="섬의 카드" data-genre="전략 카드" data-players="2~10명" data-time="15~20분" data-desc="카드로 자원을 모아 섬을 확장하고 마지막까지 살아남는 전략 카드 게임입니다.">
+  <div class="games">
+    <article class="game-card" data-game-id="island-card">
       <div class="thumb island"></div>
       <div class="game-body">
         <span class="badge">무료</span>
@@ -186,7 +173,7 @@
       </div>
     </article>
 
-    <article class="game-card" data-title="심야 추리전" data-genre="심리전 추리" data-players="4~8명" data-time="10~15분" data-desc="서로의 발언을 분석하고 거짓을 찾아내는 심리 추리 게임입니다.">
+    <article class="game-card" data-game-id="midnight-mystery">
       <div class="thumb mystery"></div>
       <div class="game-body">
         <span class="badge play">바로 플레이</span>
@@ -198,7 +185,7 @@
       </div>
     </article>
 
-    <article class="game-card" data-title="코드 브레이커" data-genre="전략 추리" data-players="1~4명" data-time="8~12분" data-desc="상대의 패턴을 읽고 암호를 해독하는 전략형 추리 게임입니다.">
+    <article class="game-card" data-game-id="code-breaker">
       <div class="thumb code"></div>
       <div class="game-body">
         <span class="badge">무료</span>
@@ -209,45 +196,7 @@
         <p class="game-desc">코드를 해독하고 시스템을 장악하세요.</p>
       </div>
     </article>
-
-    <article class="game-card" data-title="라운드 배틀" data-genre="파티 전략" data-players="2~6명" data-time="5~10분" data-desc="짧은 라운드 안에서 카드를 조합해 승부를 내는 파티 전략 게임입니다.">
-      <div class="thumb round"></div>
-      <div class="game-body">
-        <span class="badge play">바로 플레이</span>
-        <div class="game-meta">
-          <span class="game-title">라운드 배틀</span>
-          <span class="tag">파티 · 전략</span>
-        </div>
-        <p class="game-desc">카드를 조합해 최후의 팀이 되세요.</p>
-      </div>
-    </article>
-
-    <article class="game-card" data-title="킹덤 오더" data-genre="전략 턴제" data-players="2~4명" data-time="20~30분" data-desc="영지를 건설하고 세력을 확장하는 턴제 전략 게임입니다.">
-      <div class="thumb kingdom"></div>
-      <div class="game-body">
-        <span class="badge">무료</span>
-        <div class="game-meta">
-          <span class="game-title">킹덤 오더</span>
-          <span class="tag">전략 · 턴제</span>
-        </div>
-        <p class="game-desc">영지를 건설하고 세력을 확장하세요.</p>
-      </div>
-    </article>
-
-    <article class="game-card" data-title="히든 시그널" data-genre="심리전 소셜" data-players="4~10명" data-time="10~18분" data-desc="비밀 신호를 주고받으며 팀의 정체를 숨기는 소셜 심리전 게임입니다.">
-      <div class="thumb signal"></div>
-      <div class="game-body">
-        <span class="badge play">바로 플레이</span>
-        <div class="game-meta">
-          <span class="game-title">히든 시그널</span>
-          <span class="tag">심리전 · 소셜</span>
-        </div>
-        <p class="game-desc">비밀 신호로 팀플레이를 완성하세요.</p>
-      </div>
-    </article>
   </div>
-
-  <p class="empty-message" id="emptyMessage">검색 결과가 없습니다.</p>
 </section>
 
 <section id="event">
@@ -285,7 +234,7 @@
   <article class="panel">
     <div class="panel-head">
       <h3>실시간 인기 게임 TOP 5</h3>
-      <a class="more" href="#">더 보기 ›</a>
+      <button class="more-btn" type="button" data-open-catalog>더 보기 ›</button>
     </div>
 
     <ol class="rank-list">
@@ -331,14 +280,14 @@
 ```
   <div class="foot">
     <div class="footer-title">게임</div>
-    <a href="#">전체 게임</a>
-    <a href="#">장르별 게임</a>
-    <a href="#">신작 게임</a>
+    <a href="#" data-open-catalog>전체 게임</a>
+    <a href="#" data-open-catalog>장르별 게임</a>
+    <a href="#" data-open-catalog>신작 게임</a>
   </div>
 
   <div class="foot">
     <div class="footer-title">플레이</div>
-    <a href="#">랭킹</a>
+    <a href="#rank">랭킹</a>
     <a href="#">보상 & 상점</a>
     <a href="#">시즌</a>
   </div>
@@ -367,24 +316,60 @@
 
   </footer>
 
-  <div class="modal" id="gameModal" aria-hidden="true">
-    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" type="button" aria-label="닫기">×</button>
-      <span class="modal-label">게임 상세</span>
-      <h3 id="modalTitle">게임명</h3>
-      <p id="modalDesc">게임 설명</p>
-      <div class="modal-info">
-        <span id="modalGenre">장르</span>
-        <span id="modalPlayers">인원</span>
-        <span id="modalTime">시간</span>
-      </div>
-      <a class="btn primary" href="#games">플레이 준비하기</a>
+  <div class="catalog-modal" id="gameCatalog" aria-hidden="true">
+    <div class="catalog-window" role="dialog" aria-modal="true" aria-labelledby="catalogTitle">
+      <div class="catalog-head">
+        <div>
+          <span class="modal-label">게임 보관함</span>
+          <h2 id="catalogTitle">전체 게임 목록</h2>
+          <p>이동하지 않고 현재 홈페이지 위에서 게임들을 정리해서 확인합니다.</p>
+        </div>
+
+```
+    <button class="catalog-close" type="button" aria-label="게임 창 닫기">×</button>
+  </div>
+
+  <div class="catalog-tools">
+    <input id="catalogSearch" type="search" placeholder="게임명 또는 장르 검색" aria-label="게임 검색" />
+
+    <div class="catalog-filters">
+      <button class="filter-btn active" type="button" data-filter="all">전체</button>
+      <button class="filter-btn" type="button" data-filter="전략">전략</button>
+      <button class="filter-btn" type="button" data-filter="카드">카드</button>
+      <button class="filter-btn" type="button" data-filter="추리">추리</button>
+      <button class="filter-btn" type="button" data-filter="심리전">심리전</button>
+      <button class="filter-btn" type="button" data-filter="파티">파티</button>
     </div>
+  </div>
+
+  <div class="catalog-layout">
+    <div class="catalog-list" id="catalogList"></div>
+
+    <aside class="catalog-detail" id="catalogDetail">
+      <span class="detail-kicker">선택된 게임</span>
+      <h3 id="detailTitle">게임을 선택하세요</h3>
+      <p id="detailDesc">왼쪽 게임 목록에서 카드를 클릭하면 상세 정보가 표시됩니다.</p>
+
+      <div class="detail-info">
+        <span id="detailGenre">장르: -</span>
+        <span id="detailPlayers">인원: -</span>
+        <span id="detailTime">시간: -</span>
+        <span id="detailStatus">상태: -</span>
+      </div>
+
+      <button class="btn primary detail-action" type="button">플레이 준비하기</button>
+    </aside>
+  </div>
+
+  <p class="empty-message" id="catalogEmpty">검색 결과가 없습니다.</p>
+</div>
+```
+
   </div>
 
 <button class="top-button" type="button" aria-label="맨 위로 이동">↑</button>
 
-  <script src="./main.js?v=20" defer></script>
+  <script src="./main.js?v=30" defer></script>
 
 </body>
 </html>
