@@ -6,8 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>보드넷 | 전략형 온라인 게임 플랫폼</title>
   <meta name="description" content="카드, 추리, 심리전, 턴제 대전을 온라인에서 즐기는 전략형 게임 플랫폼" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./style.css?v=20" />
 </head>
+
 <body>
   <header class="topbar">
     <nav class="wrap nav">
@@ -33,6 +34,7 @@
   </div>
 
   <div class="account">
+    <button class="theme-toggle" type="button" aria-label="테마 변경">테마</button>
     <a href="#">로그인</a>
     <a class="btn primary" href="#games">지금 시작</a>
   </div>
@@ -43,7 +45,7 @@
 
   <section class="hero">
     <div class="wrap hero-inner">
-      <div>
+      <div class="hero-copy">
         <div class="eyebrow">전략이 승부를 가르는 온라인 대전</div>
 
 ```
@@ -151,12 +153,28 @@
 
 <section id="games">
   <div class="section-head">
-    <h2>추천 게임</h2>
+    <div>
+      <h2>추천 게임</h2>
+      <p class="section-desc">검색하거나 장르를 선택해서 원하는 게임을 빠르게 찾으세요.</p>
+    </div>
     <a class="more" href="#">전체 게임 보기 ›</a>
   </div>
 
-  <div class="games">
-    <article class="game-card">
+  <div class="game-tools">
+    <input id="gameSearch" type="search" placeholder="게임명 또는 장르 검색" aria-label="게임 검색" />
+
+    <div class="filter-buttons">
+      <button class="filter-btn active" type="button" data-filter="all">전체</button>
+      <button class="filter-btn" type="button" data-filter="전략">전략</button>
+      <button class="filter-btn" type="button" data-filter="카드">카드</button>
+      <button class="filter-btn" type="button" data-filter="추리">추리</button>
+      <button class="filter-btn" type="button" data-filter="심리전">심리전</button>
+      <button class="filter-btn" type="button" data-filter="파티">파티</button>
+    </div>
+  </div>
+
+  <div class="games" id="gameList">
+    <article class="game-card" data-title="섬의 카드" data-genre="전략 카드" data-players="2~10명" data-time="15~20분" data-desc="카드로 자원을 모아 섬을 확장하고 마지막까지 살아남는 전략 카드 게임입니다.">
       <div class="thumb island"></div>
       <div class="game-body">
         <span class="badge">무료</span>
@@ -168,7 +186,7 @@
       </div>
     </article>
 
-    <article class="game-card">
+    <article class="game-card" data-title="심야 추리전" data-genre="심리전 추리" data-players="4~8명" data-time="10~15분" data-desc="서로의 발언을 분석하고 거짓을 찾아내는 심리 추리 게임입니다.">
       <div class="thumb mystery"></div>
       <div class="game-body">
         <span class="badge play">바로 플레이</span>
@@ -180,7 +198,7 @@
       </div>
     </article>
 
-    <article class="game-card">
+    <article class="game-card" data-title="코드 브레이커" data-genre="전략 추리" data-players="1~4명" data-time="8~12분" data-desc="상대의 패턴을 읽고 암호를 해독하는 전략형 추리 게임입니다.">
       <div class="thumb code"></div>
       <div class="game-body">
         <span class="badge">무료</span>
@@ -192,7 +210,7 @@
       </div>
     </article>
 
-    <article class="game-card">
+    <article class="game-card" data-title="라운드 배틀" data-genre="파티 전략" data-players="2~6명" data-time="5~10분" data-desc="짧은 라운드 안에서 카드를 조합해 승부를 내는 파티 전략 게임입니다.">
       <div class="thumb round"></div>
       <div class="game-body">
         <span class="badge play">바로 플레이</span>
@@ -204,7 +222,7 @@
       </div>
     </article>
 
-    <article class="game-card">
+    <article class="game-card" data-title="킹덤 오더" data-genre="전략 턴제" data-players="2~4명" data-time="20~30분" data-desc="영지를 건설하고 세력을 확장하는 턴제 전략 게임입니다.">
       <div class="thumb kingdom"></div>
       <div class="game-body">
         <span class="badge">무료</span>
@@ -216,7 +234,7 @@
       </div>
     </article>
 
-    <article class="game-card">
+    <article class="game-card" data-title="히든 시그널" data-genre="심리전 소셜" data-players="4~10명" data-time="10~18분" data-desc="비밀 신호를 주고받으며 팀의 정체를 숨기는 소셜 심리전 게임입니다.">
       <div class="thumb signal"></div>
       <div class="game-body">
         <span class="badge play">바로 플레이</span>
@@ -228,11 +246,16 @@
       </div>
     </article>
   </div>
+
+  <p class="empty-message" id="emptyMessage">검색 결과가 없습니다.</p>
 </section>
 
 <section id="event">
   <div class="section-head">
-    <h2>이벤트 & 소식</h2>
+    <div>
+      <h2>이벤트 & 소식</h2>
+      <p class="section-desc">시즌 보상과 커뮤니티 이벤트를 확인하세요.</p>
+    </div>
   </div>
 
   <div class="promos">
@@ -247,7 +270,7 @@
     </article>
 
     <article class="promo gift">
-      <span class="pill" style="background:rgba(255,255,255,.12);color:#eacbff">커뮤니티 이벤트</span>
+      <span class="pill purple-pill">커뮤니티 이벤트</span>
       <h3>친구 초대 이벤트</h3>
       <p>
         친구를 초대하면 보상이 두 배.<br>
@@ -266,50 +289,11 @@
     </div>
 
     <ol class="rank-list">
-      <li>
-        <span class="rank-left">
-          <b class="num">1</b>
-          <i class="small-thumb"></i>
-          <span>섬의 카드 <span class="tag">전략 · 카드</span></span>
-        </span>
-        <span class="count">12,458명 플레이 중</span>
-      </li>
-
-      <li>
-        <span class="rank-left">
-          <b class="num">2</b>
-          <i class="small-thumb"></i>
-          <span>심야 추리전 <span class="tag">심리전 · 추리</span></span>
-        </span>
-        <span class="count">9,876명 플레이 중</span>
-      </li>
-
-      <li>
-        <span class="rank-left">
-          <b class="num">3</b>
-          <i class="small-thumb"></i>
-          <span>킹덤 오더 <span class="tag">전략 · 턴제</span></span>
-        </span>
-        <span class="count">8,765명 플레이 중</span>
-      </li>
-
-      <li>
-        <span class="rank-left">
-          <b class="num">4</b>
-          <i class="small-thumb"></i>
-          <span>코드 브레이커 <span class="tag">전략 · 추리</span></span>
-        </span>
-        <span class="count">6,421명 플레이 중</span>
-      </li>
-
-      <li>
-        <span class="rank-left">
-          <b class="num">5</b>
-          <i class="small-thumb"></i>
-          <span>라운드 배틀 <span class="tag">파티 · 전략</span></span>
-        </span>
-        <span class="count">5,213명 플레이 중</span>
-      </li>
+      <li><span class="rank-left"><b class="num">1</b><i class="small-thumb"></i><span>섬의 카드 <span class="tag">전략 · 카드</span></span></span><span class="count">12,458명 플레이 중</span></li>
+      <li><span class="rank-left"><b class="num">2</b><i class="small-thumb"></i><span>심야 추리전 <span class="tag">심리전 · 추리</span></span></span><span class="count">9,876명 플레이 중</span></li>
+      <li><span class="rank-left"><b class="num">3</b><i class="small-thumb"></i><span>킹덤 오더 <span class="tag">전략 · 턴제</span></span></span><span class="count">8,765명 플레이 중</span></li>
+      <li><span class="rank-left"><b class="num">4</b><i class="small-thumb"></i><span>코드 브레이커 <span class="tag">전략 · 추리</span></span></span><span class="count">6,421명 플레이 중</span></li>
+      <li><span class="rank-left"><b class="num">5</b><i class="small-thumb"></i><span>라운드 배틀 <span class="tag">파티 · 전략</span></span></span><span class="count">5,213명 플레이 중</span></li>
     </ol>
   </article>
 
@@ -383,7 +367,24 @@
 
   </footer>
 
-  <script src="main.js" defer></script>
+  <div class="modal" id="gameModal" aria-hidden="true">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" type="button" aria-label="닫기">×</button>
+      <span class="modal-label">게임 상세</span>
+      <h3 id="modalTitle">게임명</h3>
+      <p id="modalDesc">게임 설명</p>
+      <div class="modal-info">
+        <span id="modalGenre">장르</span>
+        <span id="modalPlayers">인원</span>
+        <span id="modalTime">시간</span>
+      </div>
+      <a class="btn primary" href="#games">플레이 준비하기</a>
+    </div>
+  </div>
+
+<button class="top-button" type="button" aria-label="맨 위로 이동">↑</button>
+
+  <script src="./main.js?v=20" defer></script>
 
 </body>
 </html>
