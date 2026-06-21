@@ -13,11 +13,14 @@ const filterButtons = document.querySelectorAll(".filter-btn");
 const emptyMessage = document.querySelector("#emptyMessage");
 
 const modal = document.querySelector("#gameModal");
+const modalVisual = document.querySelector("#modalVisual");
 const modalTitle = document.querySelector("#modalTitle");
 const modalDesc = document.querySelector("#modalDesc");
 const modalGenre = document.querySelector("#modalGenre");
 const modalPlayers = document.querySelector("#modalPlayers");
 const modalTime = document.querySelector("#modalTime");
+const modalDifficulty = document.querySelector("#modalDifficulty");
+const modalRules = document.querySelector("#modalRules");
 const modalClose = document.querySelector(".modal-close");
 
 let currentFilter = "전체";
@@ -123,9 +126,9 @@ let visibleCount = 0;
 gameCards.forEach((card) => {
   const title = (card.dataset.title || "").toLowerCase();
   const genre = (card.dataset.genre || "").toLowerCase();
-  const desc = (card.dataset.desc || "").toLowerCase();
+  const summary = (card.dataset.summary || "").toLowerCase();
 
-  const matchKeyword = !keyword || title.includes(keyword) || genre.includes(keyword) || desc.includes(keyword);
+  const matchKeyword = !keyword || title.includes(keyword) || genre.includes(keyword) || summary.includes(keyword);
   const matchFilter = currentFilter === "전체" || genre.includes(currentFilter.toLowerCase());
 
   const shouldShow = matchKeyword && matchFilter;
@@ -163,15 +166,36 @@ if (!modal) return;
 ```
 const title = card.dataset.title || "게임명";
 const genre = card.dataset.genre || "장르 정보 없음";
+const image = card.dataset.image || "";
 const players = card.dataset.players || "인원 정보 없음";
 const time = card.dataset.time || "시간 정보 없음";
-const desc = card.dataset.desc || "게임 설명이 없습니다.";
+const difficulty = card.dataset.difficulty || "난이도 정보 없음";
+const summary = card.dataset.summary || "게임 설명이 없습니다.";
+const rules = (card.dataset.rules || "").split("|").filter(Boolean);
+
+if (modalVisual) {
+  modalVisual.className = "modal-visual";
+  if (image) {
+    modalVisual.classList.add(image);
+  }
+}
 
 if (modalTitle) modalTitle.textContent = title;
-if (modalDesc) modalDesc.textContent = desc;
+if (modalDesc) modalDesc.textContent = summary;
 if (modalGenre) modalGenre.textContent = `장르: ${genre}`;
 if (modalPlayers) modalPlayers.textContent = `인원: ${players}`;
 if (modalTime) modalTime.textContent = `시간: ${time}`;
+if (modalDifficulty) modalDifficulty.textContent = `난이도: ${difficulty}`;
+
+if (modalRules) {
+  modalRules.innerHTML = "";
+
+  rules.forEach((rule) => {
+    const li = document.createElement("li");
+    li.textContent = rule;
+    modalRules.appendChild(li);
+  });
+}
 
 modal.classList.add("show");
 modal.setAttribute("aria-hidden", "false");
@@ -280,5 +304,5 @@ initTheme();
 applyGameFilter();
 setHeaderState();
 
-console.log("BoardNet navigation and filter loaded");
+console.log("BoardNet detail modal loaded");
 });
