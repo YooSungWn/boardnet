@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>보드넷 | 전략형 온라인 게임 플랫폼</title>
   <meta name="description" content="카드, 추리, 심리전, 턴제 대전을 온라인에서 즐기는 전략형 게임 플랫폼" />
-  <link rel="stylesheet" href="./style.css?v=50" />
+  <link rel="stylesheet" href="./style.css?v=70" />
 </head>
 
 <body>
@@ -45,7 +45,7 @@
 
   <section id="home" class="hero page-section">
     <div class="wrap hero-inner">
-      <div class="hero-copy">
+      <div>
         <div class="eyebrow">전략이 승부를 가르는 온라인 대전</div>
 
 ```
@@ -155,12 +155,12 @@
   <div class="section-head">
     <div>
       <h2>게임</h2>
-      <p class="section-desc">장르를 누르면 관련 게임만 정리되어 표시됩니다.</p>
+      <p class="section-desc">장르를 누르면 관련 게임만 표시됩니다. 게임 카드를 클릭하면 상세 설명 창이 열립니다.</p>
     </div>
   </div>
 
   <div class="game-tools">
-    <input id="gameSearch" type="search" placeholder="게임명 또는 장르 검색" aria-label="게임 검색" />
+    <input id="gameSearch" type="search" placeholder="게임명, 장르, 설명 검색" aria-label="게임 검색" />
 
     <div class="filter-buttons">
       <button class="filter-btn active" type="button" data-filter="전체">전체</button>
@@ -174,7 +174,15 @@
   </div>
 
   <div class="games" id="gameList">
-    <article class="game-card" data-title="섬의 카드" data-genre="전략 카드 심리전" data-players="2~10명" data-time="15~20분" data-desc="자원 카드와 역할 카드를 사용해 섬에서 살아남는 전략 카드 게임입니다.">
+    <article class="game-card"
+      data-title="섬의 카드"
+      data-genre="전략 카드 심리전"
+      data-image="island"
+      data-players="2~10명"
+      data-time="15~20분"
+      data-difficulty="보통"
+      data-summary="자원 카드와 역할 카드를 사용해 섬에서 살아남는 전략 카드 게임입니다."
+      data-rules="자원 카드를 모아 섬을 확장합니다.|상대의 행동을 보고 역할을 추리합니다.|회의와 선택을 반복하며 마지막까지 생존하면 승리합니다.">
       <div class="thumb island"></div>
       <div class="game-body">
         <span class="badge">무료</span>
@@ -186,7 +194,15 @@
       </div>
     </article>
 
-    <article class="game-card" data-title="심야 추리전" data-genre="심리전 추리 파티" data-players="4~8명" data-time="10~15분" data-desc="플레이어의 말과 행동을 분석해 범인을 찾아내는 심리 추리 게임입니다.">
+    <article class="game-card"
+      data-title="심야 추리전"
+      data-genre="심리전 추리 파티"
+      data-image="mystery"
+      data-players="4~8명"
+      data-time="10~15분"
+      data-difficulty="쉬움~보통"
+      data-summary="플레이어의 말과 행동을 분석해 범인을 찾아내는 심리 추리 게임입니다."
+      data-rules="밤마다 사건이 발생합니다.|플레이어는 발언을 통해 서로를 의심합니다.|투표로 범인을 찾아내면 시민 팀이 승리합니다.">
       <div class="thumb mystery"></div>
       <div class="game-body">
         <span class="badge play">바로 플레이</span>
@@ -198,7 +214,15 @@
       </div>
     </article>
 
-    <article class="game-card" data-title="코드 브레이커" data-genre="전략 추리 카드" data-players="1~4명" data-time="8~12분" data-desc="상대의 패턴을 읽고 숨겨진 코드를 해독하는 전략 추리 게임입니다.">
+    <article class="game-card"
+      data-title="코드 브레이커"
+      data-genre="전략 추리 카드"
+      data-image="code"
+      data-players="1~4명"
+      data-time="8~12분"
+      data-difficulty="보통"
+      data-summary="상대의 패턴을 읽고 숨겨진 코드를 해독하는 전략 추리 게임입니다."
+      data-rules="제한된 단서를 보고 코드를 추론합니다.|상대의 선택 패턴을 분석합니다.|정해진 턴 안에 암호를 해독하면 승리합니다.">
       <div class="thumb code"></div>
       <div class="game-body">
         <span class="badge">무료</span>
@@ -210,7 +234,15 @@
       </div>
     </article>
 
-    <article class="game-card" data-title="라운드 배틀" data-genre="파티 전략 카드" data-players="2~6명" data-time="5~10분" data-desc="짧은 라운드마다 카드를 조합해 빠르게 승부를 내는 파티 전략 게임입니다.">
+    <article class="game-card"
+      data-title="라운드 배틀"
+      data-genre="파티 전략 카드"
+      data-image="round"
+      data-players="2~6명"
+      data-time="5~10분"
+      data-difficulty="쉬움"
+      data-summary="짧은 라운드마다 카드를 조합해 빠르게 승부를 내는 파티 전략 게임입니다."
+      data-rules="각 라운드마다 카드를 선택합니다.|선택한 카드 조합으로 점수를 얻습니다.|가장 높은 누적 점수를 얻은 팀이 승리합니다.">
       <div class="thumb round"></div>
       <div class="game-body">
         <span class="badge play">바로 플레이</span>
@@ -222,7 +254,15 @@
       </div>
     </article>
 
-    <article class="game-card" data-title="킹덤 오더" data-genre="전략 턴제" data-players="2~4명" data-time="20~30분" data-desc="영지를 건설하고 세력을 확장하는 턴제 전략 게임입니다.">
+    <article class="game-card"
+      data-title="킹덤 오더"
+      data-genre="전략 턴제"
+      data-image="kingdom"
+      data-players="2~4명"
+      data-time="20~30분"
+      data-difficulty="어려움"
+      data-summary="영지를 건설하고 세력을 확장하는 턴제 전략 게임입니다."
+      data-rules="자원을 모아 영지를 개발합니다.|턴마다 병력 이동과 건설을 선택합니다.|상대 영지를 점령하거나 목표 점수에 도달하면 승리합니다.">
       <div class="thumb kingdom"></div>
       <div class="game-body">
         <span class="badge">무료</span>
@@ -234,7 +274,15 @@
       </div>
     </article>
 
-    <article class="game-card" data-title="히든 시그널" data-genre="심리전 소셜 추리" data-players="4~10명" data-time="10~18분" data-desc="비밀 신호로 아군과 소통하면서 상대를 속이는 소셜 심리전 게임입니다.">
+    <article class="game-card"
+      data-title="히든 시그널"
+      data-genre="심리전 소셜 추리"
+      data-image="signal"
+      data-players="4~10명"
+      data-time="10~18분"
+      data-difficulty="보통"
+      data-summary="비밀 신호로 아군과 소통하면서 상대를 속이는 소셜 심리전 게임입니다."
+      data-rules="각 플레이어는 비밀 역할을 받습니다.|아군에게만 통하는 신호를 주고받습니다.|상대 팀의 정체를 파악하면 승리합니다.">
       <div class="thumb signal"></div>
       <div class="game-body">
         <span class="badge play">바로 플레이</span>
@@ -397,21 +445,39 @@
   <div class="modal" id="gameModal" aria-hidden="true">
     <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <button class="modal-close" type="button" aria-label="닫기">×</button>
+
+```
+  <div class="modal-grid">
+    <div class="modal-visual" id="modalVisual"></div>
+
+    <div class="modal-content">
       <span class="modal-label">게임 상세</span>
       <h3 id="modalTitle">게임명</h3>
       <p id="modalDesc">게임 설명</p>
+
       <div class="modal-info">
         <span id="modalGenre">장르</span>
         <span id="modalPlayers">인원</span>
         <span id="modalTime">시간</span>
+        <span id="modalDifficulty">난이도</span>
       </div>
+
+      <div class="modal-rules">
+        <h4>게임 진행 방식</h4>
+        <ul id="modalRules"></ul>
+      </div>
+
       <a class="btn primary" href="#games" data-nav>플레이 준비하기</a>
     </div>
+  </div>
+</div>
+```
+
   </div>
 
 <button class="top-button" type="button" aria-label="맨 위로 이동">↑</button>
 
-  <script src="./main.js?v=50" defer></script>
+  <script src="./main.js?v=70" defer></script>
 
 </body>
 </html>
