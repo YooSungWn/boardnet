@@ -2,18 +2,18 @@
 
 <html lang="ko">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>보드넷 | 전략형 온라인 게임 플랫폼</title>
-  <meta name="description" content="카드, 추리, 심리전, 턴제 대전을 온라인에서 즐기는 전략형 게임 플랫폼" />
-  <link rel="stylesheet" href="./style.css?v=70" />
+  <meta name="description" content="카드, 추리, 심리전, 턴제 대전을 온라인에서 즐기는 전략형 게임 플랫폼">
+  <link rel="stylesheet" href="./style.css?v=200">
 </head>
 
 <body>
   <header class="topbar">
     <nav class="wrap nav">
       <a class="brand" href="#home" data-nav>
-        <i class="logo"></i>
+        <span class="logo"></span>
         <span>보드넷</span>
       </a>
 
@@ -35,7 +35,7 @@
 
   <div class="account">
     <button class="theme-toggle" type="button">라이트</button>
-    <a href="#">로그인</a>
+    <button class="link-button" type="button" data-open-notice data-notice-title="로그인 준비 중" data-notice-message="현재 보드넷은 랜딩페이지 데모 상태입니다. 실제 로그인 기능은 추후 연결할 수 있습니다.">로그인</button>
     <a class="btn primary" href="#games" data-nav>지금 시작</a>
   </div>
 </nav>
@@ -45,7 +45,7 @@
 
   <section id="home" class="hero page-section">
     <div class="wrap hero-inner">
-      <div>
+      <div class="hero-copy">
         <div class="eyebrow">전략이 승부를 가르는 온라인 대전</div>
 
 ```
@@ -60,24 +60,19 @@
     </p>
 
     <div class="hero-actions">
-      <a class="btn purple" href="#games" data-nav>지금 시작하기 →</a>
-      <a class="btn" href="#games" data-nav>게임 둘러보기</a>
+      <a class="btn purple" href="#games" data-nav>게임 선택하기 →</a>
+      <button class="btn" type="button" data-open-notice data-notice-title="빠른 매칭 준비 중" data-notice-message="빠른 매칭 기능은 실제 서버가 연결된 뒤 사용할 수 있습니다. 현재는 게임 목록과 상세 설명을 확인할 수 있습니다.">빠른 매칭</button>
     </div>
 
     <div class="feature-line">
-      <span><i class="mini-icon"></i>실시간 온라인 대전</span>
-      <span><i class="mini-icon"></i>전략 & 심리 플레이</span>
-      <span><i class="mini-icon"></i>랭킹 & 시즌 보상</span>
-      <span><i class="mini-icon"></i>크로스 플랫폼 지원</span>
+      <span><i></i>실시간 온라인 대전</span>
+      <span><i></i>전략 & 심리 플레이</span>
+      <span><i></i>랭킹 & 시즌 보상</span>
+      <span><i></i>크로스 플랫폼 지원</span>
     </div>
   </div>
 
   <div class="hero-visual">
-    <div class="arena"></div>
-    <span class="orb one"></span>
-    <span class="orb two"></span>
-    <span class="orb three"></span>
-
     <div class="screen">
       <div class="rank-row">
         <span>RANK 12</span>
@@ -107,7 +102,9 @@
       </div>
     </div>
 
-    <div class="headset"></div>
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
     <div class="player"></div>
   </div>
 </div>
@@ -121,7 +118,7 @@
         <div class="qicon">VS</div>
         <div>
           <h3>실시간 대전</h3>
-          <p>전 세계 플레이어와<br>실시간 매칭</p>
+          <p>전 세계 플레이어와 실시간 매칭</p>
         </div>
       </article>
 
@@ -130,7 +127,7 @@
     <div class="qicon">T</div>
     <div>
       <h3>전략</h3>
-      <p>치밀한 판단과<br>전술로 승리</p>
+      <p>치밀한 판단과 전술로 승리</p>
     </div>
   </article>
 
@@ -138,7 +135,7 @@
     <div class="qicon">?</div>
     <div>
       <h3>심리전</h3>
-      <p>거짓과 추리를 넘나드는<br>두뇌 싸움</p>
+      <p>거짓과 추리를 넘나드는 두뇌 싸움</p>
     </div>
   </article>
 
@@ -146,7 +143,7 @@
     <div class="qicon">P</div>
     <div>
       <h3>파티</h3>
-      <p>친구들과 함께하는<br>가벼운 한 판</p>
+      <p>친구들과 함께하는 가벼운 한 판</p>
     </div>
   </article>
 </section>
@@ -160,8 +157,17 @@
   </div>
 
   <div class="game-tools">
-    <input id="gameSearch" type="search" placeholder="게임명, 장르, 설명 검색" aria-label="게임 검색" />
+    <input id="gameSearch" type="search" placeholder="게임명, 장르, 설명 검색" aria-label="게임 검색">
 
+    <select id="gameSort" aria-label="게임 정렬">
+      <option value="popular">인기순</option>
+      <option value="short">짧은 시간순</option>
+      <option value="beginner">초보 추천순</option>
+      <option value="name">이름순</option>
+    </select>
+  </div>
+
+  <div class="filter-row">
     <div class="filter-buttons">
       <button class="filter-btn active" type="button" data-filter="전체">전체</button>
       <button class="filter-btn" type="button" data-filter="카드">카드</button>
@@ -171,6 +177,8 @@
       <button class="filter-btn" type="button" data-filter="파티">파티</button>
       <button class="filter-btn" type="button" data-filter="턴제">턴제</button>
     </div>
+
+    <p class="result-count" id="resultCount">전체 게임 6개</p>
   </div>
 
   <div class="games" id="gameList">
@@ -180,8 +188,16 @@
       data-image="island"
       data-players="2~10명"
       data-time="15~20분"
+      data-minutes="15"
       data-difficulty="보통"
+      data-beginner="3"
+      data-popularity="98"
+      data-tags="심리전 중심|4인 이상 추천|카드 전략"
       data-summary="자원 카드와 역할 카드를 사용해 섬에서 살아남는 전략 카드 게임입니다."
+      data-goal="제한된 자원을 확보하고, 다른 플레이어와 협상하거나 속이면서 섬에서 마지막까지 살아남는 것이 목표입니다."
+      data-flow="카드 선택 → 자원 획득 → 협상/심리전 → 라운드 정산"
+      data-win="마지막까지 생존하거나 목표 자원 점수에 먼저 도달하면 승리합니다."
+      data-target="심리전, 카드 조합, 협상 플레이를 좋아하는 사람에게 적합합니다."
       data-rules="자원 카드를 모아 섬을 확장합니다.|상대의 행동을 보고 역할을 추리합니다.|회의와 선택을 반복하며 마지막까지 생존하면 승리합니다.">
       <div class="thumb island"></div>
       <div class="game-body">
@@ -191,6 +207,11 @@
           <span class="tag">전략 · 카드 · 심리전</span>
         </div>
         <p class="game-desc">카드로 자원을 모아 섬을 확장하세요.</p>
+        <div class="card-tags">
+          <span>심리전 중심</span>
+          <span>4인 이상</span>
+          <span>15분</span>
+        </div>
       </div>
     </article>
 
@@ -200,8 +221,16 @@
       data-image="mystery"
       data-players="4~8명"
       data-time="10~15분"
+      data-minutes="10"
       data-difficulty="쉬움~보통"
+      data-beginner="5"
+      data-popularity="94"
+      data-tags="친구 추천|추리 중심|짧은 판"
       data-summary="플레이어의 말과 행동을 분석해 범인을 찾아내는 심리 추리 게임입니다."
+      data-goal="대화 속 모순을 찾아내고, 숨겨진 범인 또는 의심 대상을 정확히 밝혀내는 것이 목표입니다."
+      data-flow="역할 배정 → 사건 발생 → 토론 → 투표 → 정체 공개"
+      data-win="시민 팀은 범인을 찾아내면 승리하고, 범인 팀은 끝까지 정체를 숨기면 승리합니다."
+      data-target="마피아류 게임, 토론, 거짓말 찾기, 추리 게임을 좋아하는 사람에게 적합합니다."
       data-rules="밤마다 사건이 발생합니다.|플레이어는 발언을 통해 서로를 의심합니다.|투표로 범인을 찾아내면 시민 팀이 승리합니다.">
       <div class="thumb mystery"></div>
       <div class="game-body">
@@ -211,6 +240,11 @@
           <span class="tag">심리전 · 추리</span>
         </div>
         <p class="game-desc">당신의 한 마디로 판을 뒤집으세요.</p>
+        <div class="card-tags">
+          <span>친구 추천</span>
+          <span>추리 중심</span>
+          <span>10분</span>
+        </div>
       </div>
     </article>
 
@@ -220,8 +254,16 @@
       data-image="code"
       data-players="1~4명"
       data-time="8~12분"
+      data-minutes="8"
       data-difficulty="보통"
+      data-beginner="4"
+      data-popularity="86"
+      data-tags="혼자 가능|두뇌형|짧은 판"
       data-summary="상대의 패턴을 읽고 숨겨진 코드를 해독하는 전략 추리 게임입니다."
+      data-goal="제한된 단서 안에서 숨겨진 암호 규칙을 찾아내고, 상대보다 먼저 코드를 해독하는 것이 목표입니다."
+      data-flow="단서 확인 → 패턴 추론 → 코드 입력 → 결과 확인"
+      data-win="정해진 턴 안에 정확한 코드를 찾아내면 승리합니다."
+      data-target="논리 퍼즐, 추리, 숫자·패턴 분석을 좋아하는 사람에게 적합합니다."
       data-rules="제한된 단서를 보고 코드를 추론합니다.|상대의 선택 패턴을 분석합니다.|정해진 턴 안에 암호를 해독하면 승리합니다.">
       <div class="thumb code"></div>
       <div class="game-body">
@@ -231,6 +273,11 @@
           <span class="tag">전략 · 추리</span>
         </div>
         <p class="game-desc">코드를 해독하고 시스템을 장악하세요.</p>
+        <div class="card-tags">
+          <span>혼자 가능</span>
+          <span>두뇌형</span>
+          <span>8분</span>
+        </div>
       </div>
     </article>
 
@@ -240,8 +287,16 @@
       data-image="round"
       data-players="2~6명"
       data-time="5~10분"
+      data-minutes="5"
       data-difficulty="쉬움"
+      data-beginner="5"
+      data-popularity="82"
+      data-tags="초보 추천|빠른 판|파티용"
       data-summary="짧은 라운드마다 카드를 조합해 빠르게 승부를 내는 파티 전략 게임입니다."
+      data-goal="각 라운드에서 가장 효율적인 카드 조합을 선택해 누적 점수를 가장 높이는 것이 목표입니다."
+      data-flow="카드 선택 → 효과 발동 → 점수 계산 → 다음 라운드"
+      data-win="정해진 라운드가 끝났을 때 가장 높은 점수를 가진 플레이어 또는 팀이 승리합니다."
+      data-target="짧고 가벼운 게임, 친구와 바로 할 수 있는 게임을 원하는 사람에게 적합합니다."
       data-rules="각 라운드마다 카드를 선택합니다.|선택한 카드 조합으로 점수를 얻습니다.|가장 높은 누적 점수를 얻은 팀이 승리합니다.">
       <div class="thumb round"></div>
       <div class="game-body">
@@ -251,6 +306,11 @@
           <span class="tag">파티 · 전략 · 카드</span>
         </div>
         <p class="game-desc">카드를 조합해 최후의 팀이 되세요.</p>
+        <div class="card-tags">
+          <span>초보 추천</span>
+          <span>빠른 판</span>
+          <span>5분</span>
+        </div>
       </div>
     </article>
 
@@ -260,8 +320,16 @@
       data-image="kingdom"
       data-players="2~4명"
       data-time="20~30분"
+      data-minutes="20"
       data-difficulty="어려움"
+      data-beginner="2"
+      data-popularity="78"
+      data-tags="장기전|턴제 전략|운영 중심"
       data-summary="영지를 건설하고 세력을 확장하는 턴제 전략 게임입니다."
+      data-goal="영지를 발전시키고 군사·자원 운영을 통해 상대 세력을 압도하는 것이 목표입니다."
+      data-flow="자원 생산 → 건설 선택 → 병력 이동 → 전투/정산"
+      data-win="목표 점수를 먼저 달성하거나 상대 핵심 영지를 점령하면 승리합니다."
+      data-target="장기 전략, 자원 운영, 턴제 전투를 좋아하는 사람에게 적합합니다."
       data-rules="자원을 모아 영지를 개발합니다.|턴마다 병력 이동과 건설을 선택합니다.|상대 영지를 점령하거나 목표 점수에 도달하면 승리합니다.">
       <div class="thumb kingdom"></div>
       <div class="game-body">
@@ -271,6 +339,11 @@
           <span class="tag">전략 · 턴제</span>
         </div>
         <p class="game-desc">영지를 건설하고 세력을 확장하세요.</p>
+        <div class="card-tags">
+          <span>장기전</span>
+          <span>턴제</span>
+          <span>20분</span>
+        </div>
       </div>
     </article>
 
@@ -280,8 +353,16 @@
       data-image="signal"
       data-players="4~10명"
       data-time="10~18분"
+      data-minutes="10"
       data-difficulty="보통"
+      data-beginner="3"
+      data-popularity="88"
+      data-tags="소셜 추리|팀플레이|심리전"
       data-summary="비밀 신호로 아군과 소통하면서 상대를 속이는 소셜 심리전 게임입니다."
+      data-goal="자신의 팀 정체를 숨기면서 아군에게는 신호를 보내고, 상대 팀의 정체를 찾아내는 것이 목표입니다."
+      data-flow="역할 배정 → 신호 교환 → 추리/토론 → 팀 판정"
+      data-win="상대 팀의 정체를 먼저 밝혀내거나 목표 미션을 완수하면 승리합니다."
+      data-target="팀플레이, 암호 신호, 소셜 추리 게임을 좋아하는 사람에게 적합합니다."
       data-rules="각 플레이어는 비밀 역할을 받습니다.|아군에게만 통하는 신호를 주고받습니다.|상대 팀의 정체를 파악하면 승리합니다.">
       <div class="thumb signal"></div>
       <div class="game-body">
@@ -291,11 +372,74 @@
           <span class="tag">심리전 · 소셜</span>
         </div>
         <p class="game-desc">비밀 신호로 팀플레이를 완성하세요.</p>
+        <div class="card-tags">
+          <span>소셜 추리</span>
+          <span>팀플레이</span>
+          <span>10분</span>
+        </div>
       </div>
     </article>
   </div>
 
   <p class="empty-message" id="emptyMessage">조건에 맞는 게임이 없습니다.</p>
+</section>
+
+<section id="why" class="page-section">
+  <div class="section-head">
+    <div>
+      <h2>왜 보드넷인가?</h2>
+      <p class="section-desc">게임을 고르고 이해하고 시작하기까지의 과정을 줄이는 것이 핵심입니다.</p>
+    </div>
+  </div>
+
+  <div class="value-grid">
+    <article class="panel value-card">
+      <strong>01</strong>
+      <h3>설치 없이 바로 접근</h3>
+      <p>웹에서 게임 정보를 확인하고, 원하는 장르를 빠르게 찾을 수 있습니다.</p>
+    </article>
+
+    <article class="panel value-card">
+      <strong>02</strong>
+      <h3>장르별 탐색</h3>
+      <p>카드, 추리, 심리전, 전략, 파티 게임을 필터로 분류해 확인할 수 있습니다.</p>
+    </article>
+
+    <article class="panel value-card">
+      <strong>03</strong>
+      <h3>게임 이해 중심</h3>
+      <p>인원, 시간, 난이도, 승리 조건을 먼저 보여줘 선택 부담을 줄입니다.</p>
+    </article>
+  </div>
+</section>
+
+<section id="how" class="page-section">
+  <div class="section-head">
+    <div>
+      <h2>플레이 방법</h2>
+      <p class="section-desc">처음 방문한 사용자도 3단계로 이해할 수 있게 구성했습니다.</p>
+    </div>
+  </div>
+
+  <div class="steps">
+    <article class="step-card">
+      <span>STEP 1</span>
+      <h3>게임 선택</h3>
+      <p>장르 필터와 검색으로 원하는 게임을 찾습니다.</p>
+    </article>
+
+    <article class="step-card">
+      <span>STEP 2</span>
+      <h3>설명 확인</h3>
+      <p>게임 카드 클릭 후 인원, 시간, 진행 방식, 승리 조건을 확인합니다.</p>
+    </article>
+
+    <article class="step-card">
+      <span>STEP 3</span>
+      <h3>매칭 또는 친구 초대</h3>
+      <p>실제 서비스에서는 빠른 매칭 또는 방 만들기로 플레이를 시작합니다.</p>
+    </article>
+  </div>
 </section>
 
 <section id="rank" class="page-section bottom-grid">
@@ -343,7 +487,7 @@
         랭크 플레이로 특별 보상을 획득하세요.<br>
         06.01(토) ~ 06.30(일)
       </p>
-      <a class="btn" href="#">자세히 보기</a>
+      <button class="btn" type="button" data-open-notice data-notice-title="이벤트 준비 중" data-notice-message="이벤트 상세 페이지는 현재 준비 중입니다. 실제 서비스에서는 시즌 보상과 참여 조건을 연결할 수 있습니다.">자세히 보기</button>
     </article>
 
     <article class="promo gift">
@@ -353,7 +497,36 @@
         친구를 초대하면 보상이 두 배.<br>
         지금 바로 함께 플레이하세요.
       </p>
-      <a class="btn" href="#">이벤트 참여하기</a>
+      <button class="btn" type="button" data-open-notice data-notice-title="친구 초대 준비 중" data-notice-message="친구 초대 기능은 계정 시스템과 연결한 뒤 사용할 수 있습니다.">이벤트 참여하기</button>
+    </article>
+  </div>
+</section>
+
+<section id="upcoming" class="page-section">
+  <div class="section-head">
+    <div>
+      <h2>출시 예정 게임</h2>
+      <p class="section-desc">보드넷에서 확장될 수 있는 신규 게임 목록입니다.</p>
+    </div>
+  </div>
+
+  <div class="upcoming-grid">
+    <article class="panel upcoming-card">
+      <span>COMING SOON</span>
+      <h3>마피아 테이블</h3>
+      <p>정체를 숨기고 토론으로 살아남는 소셜 추리 게임</p>
+    </article>
+
+    <article class="panel upcoming-card">
+      <span>COMING SOON</span>
+      <h3>왕국 회의</h3>
+      <p>외교, 협상, 배신이 핵심인 정치 전략 게임</p>
+    </article>
+
+    <article class="panel upcoming-card">
+      <span>COMING SOON</span>
+      <h3>거짓말 경매장</h3>
+      <p>가짜 정보와 진짜 가치를 구분하는 심리 경매 게임</p>
     </article>
   </div>
 </section>
@@ -394,7 +567,7 @@
     <div class="wrap footer-grid">
       <div class="foot">
         <a class="brand" href="#home" data-nav>
-          <i class="logo"></i>
+          <span class="logo"></span>
           <span>보드넷</span>
         </a>
         <p>
@@ -420,10 +593,10 @@
 
   <div class="foot">
     <div class="footer-title">고객지원</div>
-    <a href="#support" data-nav>FAQ</a>
-    <a href="#support" data-nav>문의하기</a>
-    <a href="#support" data-nav>이용약관</a>
-    <a href="#support" data-nav>개인정보처리방침</a>
+    <button class="footer-button" type="button" data-open-notice data-notice-title="FAQ 준비 중" data-notice-message="FAQ 페이지는 추후 별도 페이지로 연결할 수 있습니다.">FAQ</button>
+    <button class="footer-button" type="button" data-open-notice data-notice-title="문의 기능 준비 중" data-notice-message="문의하기 기능은 이메일 또는 문의 폼과 연결할 수 있습니다.">문의하기</button>
+    <button class="footer-button" type="button" data-open-notice data-notice-title="이용약관 준비 중" data-notice-message="실제 서비스 운영 전 이용약관 페이지가 필요합니다.">이용약관</button>
+    <button class="footer-button" type="button" data-open-notice data-notice-title="개인정보처리방침 준비 중" data-notice-message="회원가입 기능이 들어가면 개인정보처리방침 페이지가 필요합니다.">개인정보처리방침</button>
   </div>
 
   <div class="foot">
@@ -462,12 +635,32 @@
         <span id="modalDifficulty">난이도</span>
       </div>
 
+      <div class="modal-section">
+        <h4>게임 목표</h4>
+        <p id="modalGoal">게임 목표</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>진행 방식</h4>
+        <p id="modalFlow">진행 방식</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>승리 조건</h4>
+        <p id="modalWin">승리 조건</p>
+      </div>
+
+      <div class="modal-section">
+        <h4>추천 대상</h4>
+        <p id="modalTarget">추천 대상</p>
+      </div>
+
       <div class="modal-rules">
-        <h4>게임 진행 방식</h4>
+        <h4>게임 진행 요약</h4>
         <ul id="modalRules"></ul>
       </div>
 
-      <a class="btn primary" href="#games" data-nav>플레이 준비하기</a>
+      <button class="btn primary" type="button" data-open-notice data-notice-title="플레이 기능 준비 중" data-notice-message="현재는 랜딩페이지 데모입니다. 실제 게임 실행은 게임 서버와 매칭 시스템을 연결한 뒤 사용할 수 있습니다.">플레이 준비하기</button>
     </div>
   </div>
 </div>
@@ -475,9 +668,19 @@
 
   </div>
 
+  <div class="notice-modal" id="noticeModal" aria-hidden="true">
+    <div class="notice-box" role="dialog" aria-modal="true" aria-labelledby="noticeTitle">
+      <button class="notice-close" type="button" aria-label="닫기">×</button>
+      <span class="modal-label">안내</span>
+      <h3 id="noticeTitle">준비 중</h3>
+      <p id="noticeMessage">현재 준비 중인 기능입니다.</p>
+      <button class="btn primary notice-ok" type="button">확인</button>
+    </div>
+  </div>
+
 <button class="top-button" type="button" aria-label="맨 위로 이동">↑</button>
 
-  <script src="./main.js?v=70" defer></script>
+  <script src="./main.js?v=200" defer></script>
 
 </body>
 </html>
